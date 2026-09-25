@@ -1,0 +1,949 @@
+/* =========================================================
+   VARIÁVEIS
+   ========================================================= */
+
+:root {
+    --cor-dominante: #00000042;
+    --cor-apoio: #61204A;
+    --cor-acento: #37A691;
+    --cor-texto: #ffffff;
+    --cor-tsecundario: #f6e5aa;
+
+    --fonte-base: Arial, Helvetica, sans-serif;
+    --fonte-titulo: Georgia, 'Times New Roman', Times, serif;
+    --fonte-cursiva: 'Brush Script MT', 'Lucida Handwriting', cursive;
+
+    --espaco-xs: 8px;
+    --espaco-sm: 15px;
+    --espaco-md: 25px;
+    --espaco-lg: 40px;
+
+    --raio: 10px;
+
+    --sombra-card: 0 5px 15px rgba(0, 0, 0, 0.4);
+    --sombra-hover: 0 8px 20px rgba(55, 166, 145, 0.6);
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background-color: var(--cor-dominante);
+    color: var(--cor-texto);
+    font-family: var(--fonte-base);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 10px;
+
+    background-color: var(--cor-acento);
+    color: var(--cor-texto);
+
+    padding: 10px 20px;
+
+    border-radius: var(--raio);
+
+    font-weight: bold;
+    text-decoration: none;
+
+    z-index: 999;
+
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid var(--cor-tsecundario);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: var(--espaco-md);
+
+    padding: var(--espaco-sm) var(--espaco-lg);
+
+    background-color: var(--cor-apoio);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-sm);
+}
+
+.logo {
+    width: 75px;
+    height: 90px;
+    object-fit: contain;
+}
+
+.nome-agencia {
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--cor-tsecundario);
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   NAVEGAÇÃO
+   ========================================================= */
+
+.site-nav ul {
+    display: flex;
+    gap: var(--espaco-md);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.site-nav a {
+    text-decoration: none;
+    color: var(--cor-texto);
+
+    font-weight: bold;
+    font-size: 0.95rem;
+
+    padding: 6px 4px;
+
+    position: relative;
+
+    transition: color 0.3s;
+}
+
+.site-nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background-color: var(--cor-acento);
+
+    transition: width 0.3s;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+    color: var(--cor-acento);
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   SEÇÕES GERAIS
+   ========================================================= */
+
+.section {
+    padding: var(--espaco-lg) var(--espaco-md);
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+#sobre {
+    text-align: justify;
+    background-color: transparent;
+}
+
+#sobre p {
+    margin-bottom: var(--espaco-sm);
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.3;
+}
+
+h2 {
+    background-color: var(--cor-apoio);
+
+    border: 1px solid var(--cor-dominante);
+
+    border-radius: var(--raio);
+
+    padding: 12px 25px;
+
+    display: inline-block;
+
+    text-align: center;
+
+    font-family: var(--fonte-titulo);
+
+    color: var(--cor-tsecundario);
+
+    font-size: 1.6rem;
+
+    margin: 0 auto var(--espaco-md);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+h2:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-hover);
+}
+
+p {
+    margin-bottom: var(--espaco-sm);
+}
+
+
+/* =========================================================
+   TÍTULO E CARROSSEL
+   ========================================================= */
+
+.cursive-title {
+    font-family: var(--fonte-cursiva);
+
+    text-align: center;
+
+    font-size: clamp(2.5rem, 8vw, 4rem);
+
+    color: var(--cor-tsecundario);
+
+    margin: var(--espaco-lg) 0 var(--espaco-md);
+
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+
+/* =========================================================
+   CONTAINER DO CARROSSEL
+   ========================================================= */
+
+.carousel-container {
+    position: relative;
+
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto var(--espaco-lg);
+
+    overflow: hidden;
+
+    border-radius: var(--raio);
+
+    border: 2px solid var(--cor-acento);
+
+    background: #111;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   FAIXA DO CARROSSEL
+   ========================================================= */
+
+.carousel-track {
+    display: flex;
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    scroll-snap-type: x mandatory;
+
+    scroll-behavior: smooth;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    /* Permite arrastar horizontalmente no celular */
+    touch-action: pan-x;
+
+    /* Evita comportamentos estranhos de overscroll */
+    overscroll-behavior-x: contain;
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   SLIDES
+   ========================================================= */
+
+.carousel-slide {
+    flex: 0 0 100%;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    scroll-snap-align: start;
+
+    list-style: none;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #111;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+
+/* =========================================================
+   SETAS
+   ========================================================= */
+
+.carousel-arrow {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    background-color: rgba(0, 0, 0, 0.55);
+
+    color: var(--cor-texto);
+
+    border: 0;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    font-size: 1.4rem;
+
+    border-radius: 50%;
+
+    z-index: 10;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s,
+        transform 0.3s;
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus-visible {
+    background-color: var(--cor-acento);
+
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev {
+    left: 15px;
+}
+
+.carousel-next {
+    right: 15px;
+}
+
+
+/* =========================================================
+   INDICADORES
+   ========================================================= */
+
+.carousel-dots {
+    position: absolute;
+
+    left: 50%;
+    bottom: 14px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 8px;
+
+    z-index: 10;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.55);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s,
+        transform 0.3s;
+
+    -webkit-tap-highlight-color: transparent;
+
+    user-select: none;
+}
+
+.carousel-dot:hover {
+    background-color: var(--cor-acento);
+
+    transform: scale(1.15);
+}
+
+.carousel-dot.is-active {
+    background: var(--cor-tsecundario);
+
+    transform: scale(1.2);
+}
+
+
+/* =========================================================
+   BOTÃO
+   ========================================================= */
+
+.btn {
+    display: inline-block;
+
+    background-color: var(--cor-acento);
+
+    color: var(--cor-texto);
+
+    padding: 12px 30px;
+
+    border-radius: var(--raio);
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    margin-top: var(--espaco-sm);
+
+    transition:
+        background-color 0.3s,
+        transform 0.2s;
+}
+
+.btn:hover,
+.btn:focus-visible {
+    background-color: var(--cor-apoio);
+
+    transform: translateY(-2px);
+}
+
+.lead {
+    font-size: 1.1rem;
+
+    max-width: 750px;
+
+    margin: var(--espaco-md) auto;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.grid-cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+
+    gap: var(--espaco-md);
+
+    margin-top: var(--espaco-md);
+
+    text-align: center;
+}
+
+.card {
+    background-color: var(--cor-apoio);
+
+    border: 1px solid var(--cor-dominante);
+
+    border-radius: var(--raio);
+
+    padding: var(--espaco-sm);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    gap: var(--espaco-xs);
+
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: var(--sombra-hover);
+}
+
+.card img {
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: contain;
+
+    border-radius: 6px;
+}
+
+.card h3 {
+    font-size: 1rem;
+
+    color: var(--cor-tsecundario);
+
+    font-family: var(--fonte-titulo);
+}
+
+.card p {
+    font-size: 0.95rem;
+
+    color: var(--cor-texto);
+}
+
+
+/* =========================================================
+   CARD DE PERFIL
+   ========================================================= */
+
+.card--perfil {
+    max-width: 420px;
+
+    margin: var(--espaco-md) auto;
+}
+
+
+/* =========================================================
+   FIGURA DA EQUIPE
+   ========================================================= */
+
+.figura-equipe {
+    margin-top: var(--espaco-md);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: var(--espaco-xs);
+}
+
+.figura-equipe img {
+    border-radius: var(--raio);
+
+    box-shadow: var(--sombra-card);
+
+    width: 100%;
+
+    max-width: 800px;
+
+    height: auto;
+}
+
+.figura-equipe figcaption {
+    font-style: italic;
+
+    font-size: 0.9rem;
+
+    color: var(--cor-tsecundario);
+}
+
+
+/* =========================================================
+   DIFERENCIAIS / CITAÇÃO
+   ========================================================= */
+
+#diferenciais p {
+    margin-bottom: var(--espaco-sm);
+
+    text-align: justify;
+}
+
+blockquote {
+    background-color: var(--cor-apoio);
+
+    border-left: 5px solid var(--cor-acento);
+
+    border-radius: var(--raio);
+
+    padding: var(--espaco-md);
+
+    margin: var(--espaco-md) auto 0;
+
+    max-width: 700px;
+
+    font-style: italic;
+
+    text-align: center;
+}
+
+blockquote cite {
+    display: block;
+
+    margin-top: var(--espaco-xs);
+
+    font-size: 0.9rem;
+
+    color: var(--cor-tsecundario);
+
+    font-style: normal;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   CONTATO
+   ========================================================= */
+
+.lista-contato {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: var(--espaco-md);
+
+    margin: var(--espaco-md) 0;
+}
+
+.lista-contato a {
+    color: var(--cor-acento);
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    font-size: 1.05rem;
+
+    padding: 8px 16px;
+
+    border: 1px solid var(--cor-acento);
+
+    border-radius: var(--raio);
+
+    transition:
+        background-color 0.3s,
+        color 0.3s;
+}
+
+.lista-contato a:hover,
+.lista-contato a:focus-visible {
+    background-color: var(--cor-acento);
+
+    color: var(--cor-texto);
+}
+
+.endereco {
+    font-size: 0.95rem;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+    background-color: var(--cor-apoio);
+
+    color: var(--cor-texto);
+
+    text-align: center;
+
+    padding: var(--espaco-md);
+
+    margin-top: var(--espaco-lg);
+
+    font-size: 0.9rem;
+}
+
+.site-footer p + p {
+    margin-top: var(--espaco-xs);
+}
+
+.site-footer a {
+    color: var(--cor-tsecundario);
+
+    text-decoration: underline;
+
+    transition: color 0.3s;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+    color: var(--cor-acento);
+}
+
+
+/* =========================================================
+   TABLETS
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .site-header {
+        flex-direction: column;
+
+        gap: var(--espaco-sm);
+
+        padding:
+            var(--espaco-sm)
+            var(--espaco-md);
+
+        text-align: center;
+    }
+
+    .site-nav ul {
+        gap: var(--espaco-sm);
+    }
+
+    .carousel-slide {
+        aspect-ratio: 16 / 9;
+    }
+}
+
+
+/* =========================================================
+   CELULARES
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .carousel-slide {
+        aspect-ratio: 4 / 3;
+    }
+
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+
+        font-size: 1.1rem;
+    }
+
+    .carousel-prev {
+        left: 8px;
+    }
+
+    .carousel-next {
+        right: 8px;
+    }
+
+    .site-header {
+        padding:
+            var(--espaco-sm)
+            var(--espaco-md);
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+
+    html {
+        scroll-padding-top: 200px;
+    }
+
+    .nome-agencia {
+        font-size: 1.2rem;
+    }
+
+    .logo {
+        width: 60px;
+        height: 70px;
+    }
+
+    .site-nav ul {
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: var(--espaco-xs);
+    }
+
+    .cursive-title {
+        font-size: 2.2rem;
+    }
+
+    .carousel-slide {
+        aspect-ratio: 4 / 3;
+    }
+
+    .carousel-arrow {
+        width: 38px;
+        height: 38px;
+
+        font-size: 1.1rem;
+    }
+
+    .carousel-dots {
+        bottom: 8px;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+
+        padding:
+            10px
+            16px;
+    }
+
+    .section {
+        padding:
+            var(--espaco-md)
+            var(--espaco-sm);
+    }
+
+    .card img {
+        height: 180px;
+    }
+
+    .lista-contato {
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: var(--espaco-sm);
+    }
+
+    .lista-contato a {
+        width: 100%;
+
+        max-width: 280px;
+
+        text-align: center;
+    }
+
+    blockquote {
+        padding: var(--espaco-sm);
+    }
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE — REDUÇÃO DE MOVIMENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
+    }
+
+    .carousel-track {
+        scroll-behavior: auto;
+    }
+}
