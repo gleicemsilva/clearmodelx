@@ -1,2 +1,2 @@
-# clearmodelx
+# ClearModelx
 Agência de Modelos
